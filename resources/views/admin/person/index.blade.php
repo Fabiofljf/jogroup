@@ -15,6 +15,13 @@
             <a href="{{ route('admin.person.create') }}" class="media_none btn btn-danger text-white">Registra una persona +</a>
         </div>
     </div>
+
+    <form>
+        <label for="search">Cerca</label>
+        <input type="text">
+        <button>Search</button>
+    </form>
+    
     <div class="row my-5">
         <table class="table table-responsive-sm">
             <thead>
