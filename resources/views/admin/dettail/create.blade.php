@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<h2 class="py-4">Registrazione nuovo utente</h2>
+<h2 class="py-4">Registrazione Informazioni aggiuntive</h2>
 @if ($errors->any())
 <div class="alert alert-danger" role="alert">
     <ul>
@@ -15,48 +15,67 @@
 <p class="my-3 d-flex justify-content-end">Campi obbligatori contrassegnati da *</p>
 <!-- / Avviso campi obbligatori -->
 
-<form action="{{ route('admin.person.store') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('admin.dettail.store') }}" method="post" enctype="multipart/form-data">
     @csrf
 
-    <!-- Nome Utente -->
+    <!-- Utente -->
     <div class="mb-4">
-        <label for="name">Nome*</label>
-        <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Mario" required aria-describedby="nameHelper">
-        <small id="nameHelper" class="text-muted">Aggiungi il nome dell'utente</small>
+        <label for="person_id" required aria-describedby="RoleHelper">Scegli un utente*</label>
+        <select name="person_id" id="person_id" class=" @error('person_id') is-invalid @enderror">
+            <option value="">Seleziona un utente</option>
+            @forelse($people as $person)
+            <option value="{{$person->id}}" uniqid>{{$person->name}} {{$person->surname}}</option>
+            @empty
+            <option value="">Non esistono utenti</option>
+            @endforelse
+        </select>
+        <small id="RoleHelper" class="text-muted">Aggiungi un utente a cui associare le info aggiuntive</small>
     </div>
 
-    <!-- Cognome Utente -->
+    <!-- Istituto Utente -->
     <div class="mb-4">
-        <label for="surname">Cognome*</label>
-        <input type="text" name="surname" id="surname" class="form-control @error('surname') is-invalid @enderror" placeholder="Rossi" required aria-describedby="surnameHelper">
-        <small id="surnameHelper" class="text-muted">Aggiungi il cognome dell'utente</small>
+        <label for="school">Istituto*</label>
+        <input type="text" name="school" id="school" class="form-control @error('school') is-invalid @enderror" placeholder="Università di Catania" required aria-describedby="schoolHelper">
+        <small id="schoolHelper" class="text-muted">Aggiungi l'Istituto dell'utente</small>
     </div>
 
-    <!-- Genere Utente -->
+    <!-- Argomenti -->
     <div class="mb-4">
-        <label for="gender">E-mail*</label>
-        <input type="text" name="gender" id="gender" class="form-control @error('gender') is-invalid @enderror" placeholder="Maschio" required aria-describedby="genderHelper">
-        <small id="genderHelper" class="text-muted">Aggiungi il Genere dell'utente</small>
+        <label for="argoment">Argomenti*</label>
+        <input type="text" name="argoment" id="argoment" class="form-control @error('argoment') is-invalid @enderror" placeholder="Economia, Fisica" required aria-describedby="argomentHelper">
+        <small id="argomentHelper" class="text-muted">Aggiungi l'Argomento</small>
     </div>
 
-    <!-- E-mail Utente -->
+    <!-- Attestato Utente -->
     <div class="mb-4">
-        <label for="email">E-mail*</label>
-        <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Prova@prova.com" required aria-describedby="emailHelper">
-        <small id="emailHelper" class="text-muted">Aggiungi l'email dell'utente</small>
+        <label for="title">Attestato*</label>
+        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Laurea" required aria-describedby="titleHelper">
+        <small id="titleHelper" class="text-muted">Aggiungi L, LM</small>
     </div>
 
-    <!-- Data di Nascita Utente -->
+    <!-- Anno da -->
     <div class="mb-4">
-        <label for="date_of_birth">date_of_birth di Nascita*</label>
-        <input type="date" name="date_of_birth" id="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror" required aria-describedby="date_of_birthHelper">
-        <small id="date_of_birthHelper" class="text-muted">Aggiungi la data di nascita dell'utente</small>
+        <label for="year_from">Anno da*</label>
+        <input type="text" name="year_from" id="year_from" class="form-control @error('year_from') is-invalid @enderror" placeholder="2012" required aria-describedby="year_fromHelper">
+        <small id="year_fromHelper" class="text-muted">Aggiungi l'email dell'utente</small>
+    </div>
+
+    <!-- Anno a -->
+    <div class="mb-4">
+        <label for="year_to">Anno a*</label>
+        <input type="text" name="year_to" id="year_to" class="form-control @error('year_to') is-invalid @enderror" placeholder="2015" required aria-describedby="year_toHelper">
+        <small id="year_toHelper" class="text-muted">Aggiungi l'email dell'utente</small>
+    </div>
+
+    <!-- Voto -->
+    <div class="mb-4">
+        <label for="vote">Voto</label>
+        <input type="text" name="vote" id="vote" class="form-control @error('vote') is-invalid @enderror" placeholder="100" required aria-describedby="voteHelper">
+        <small id="voteHelper" class="text-muted">Aggiungi la data di nascita dell'utente</small>
     </div>
 
 
-    <button type="submit" class="btn btn-danger text-white my-4">Registrazione</button>
-
-    <!-- Script JS -->
+    <button type="submit" class="btn btn-danger text-white my-4">Aggiungi</button>
 
 </form>
 @endsection

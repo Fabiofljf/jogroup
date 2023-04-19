@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Model\Person;
+use App\Model\Dettail;
 
 class DettailController extends Controller
 {
@@ -32,27 +34,35 @@ class DettailController extends Controller
      */
     public function create()
     {
-        return view('admin.dettail.create');
+        $people = Person::all();
+
+        return view('admin.dettail.create', compact('people'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\PersonRequest $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PersonRequest $request, Person $person)
+    public function store(Request $request, Dettail $dettail)
     {
-        //dd($request->validated());
+        //dd($request->validate());
         //Richiesta e validazione dati
-        $data = $request->validated();
-
-        $date_of_birth = $request->date_of_birth;
-        $date_of_birth = Carbon::createFromFormat('Y-m-d', $date_of_birth)->format('d/m/Y');
-        $data['date_of_birth'] = $date_of_birth;
+        $val_data = $request->validate(
+            [
+                'person_id' => 'required',
+                'school' => 'required',
+                'argoment' => 'required',
+                'title' => 'required',
+                'year_from' => 'required',
+                'year_to' => 'required',
+                'vote' => 'nullable'
+            ]
+        );
 
         // Salvataggio i dati nel db
-        Person::create($data);
+        Dettail::create($val_data);
 
         // try {
         // } catch (Exception $e) {
@@ -61,7 +71,7 @@ class DettailController extends Controller
         // }
 
         // Reindirizzamento
-        return redirect()->route('admin.person.index')->with('message', 'Nuovo profilo user creato con successo');
+        return redirect()->route('admin.dettail.index')->with('message', 'Nuovo profilo user creato con successo');
     }
 
     /**

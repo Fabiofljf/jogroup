@@ -36,7 +36,7 @@ class PersonController extends Controller
         foreach($birthYear as $key => $value){
             $personDate = $value->date_of_birth;
             $personDate = Carbon::createFromFormat('d/m/Y', $personDate)->format('Y');
-            //dd($personDate[$key]);
+            //dd($personDate);
             $years = $currentYear - $personDate;
             //$year = $years['key'];
             //array_push($year, $birthYear);

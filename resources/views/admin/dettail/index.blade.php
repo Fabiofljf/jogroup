@@ -12,7 +12,7 @@
     <div class="d-flex justify-content-between py-4">
         <h1>Lista delle <strong class="c_secondary">esperienze formative</strong></h1>
         <div id="query_mobile">
-            <a href="{{ route('admin.person.create') }}" class="media_none btn btn-danger text-white">Aggiungi un'esperienze +</a>
+            <a href="{{ route('admin.dettail.create') }}" class="media_none btn btn-danger text-white">Aggiungi un'esperienze +</a>
         </div>
     </div>
     <div class="row my-5">

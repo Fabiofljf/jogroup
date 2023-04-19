@@ -32,7 +32,7 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
 
     Route::resource('person', 'PersonController');
 
-    Route::resource('dettail', 'DettailController');
+    Route::resource('dettail', 'DettailController')->except(['show']);
     
 });
 
