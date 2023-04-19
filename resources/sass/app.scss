@@ -1,0 +1,92 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+/* COMMONS ROULES */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul{
+  list-style-type: none;
+}
+
+/* UTILITY */
+
+:root {
+  --bc_palette-jogroup: #0500CF;
+  --bc_white: white;
+  --bc_black: black;
+  --bc_grey: #D3D3D3;
+
+  /* font size */
+  --fs_custom_md: 1rem;
+
+  /* font size media query */
+  --fs_custom-mq_md: 1.4rem;
+  --fs_custom-mq_lg: 2.5rem;
+}
+
+/* Margin custom */
+
+/* Padding custom */
+
+/* Background-color */
+.bg_custom_jogroup {
+  background-color: var(--bc_palette-jogroup);
+}
+
+.bg_custom_white {
+  background-color: var(--bc_white);
+}
+
+.bg_custom_black {
+  background-color: var(--bc_black);
+}
+
+.bg_custom_grey {
+  background-color: var(--bc_grey);
+}
+
+/* Color */
+.c_custom_jogroup {
+  color: var(--bc_palette-jogroup);
+}
+
+.c_custom_white {
+  color: var(--bc_white);
+}
+
+.c_custom_black {
+  color: var(--bc_black);
+}
+
+.c_custom_grey {
+  color: var(--bc_grey);
+}
+
+/* Anchor tag */
+
+/* HEADER */
+
+/* MEDIA QUERY */
+/* Menu flex to tablet */
+@media screen and (max-width: 768px) {
+}
+
+/* Menu flex to desktop */
+@media screen and (min-width: 769px) {
+}
